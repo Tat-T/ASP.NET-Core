@@ -1,28 +1,22 @@
-using CocktailApp.Models;
-using System.Text.Encodings.Web;
+using AnimalApp.Models;
+using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 using System.Xml.Serialization;
 
-namespace CocktailApp.Services
+namespace AnimalApp.Services
 {
     public class FileOutputService : IOutputService
     {
-        public void OutputToFile(List<Cocktail> cocktails, string format)
+        public void OutputToFile(List<Animal> animals, string format)
         {
-           if (format.ToLower() == "json")
-        {
-            var options = new JsonSerializerOptions
+            if (format.ToLower() == "json")
             {
-                WriteIndented = true,
-                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping // Отключаем экранирование символов Unicode
-            };
-
-            string jsonString = JsonSerializer.Serialize(cocktails, options);
-            File.WriteAllText("cocktails.json", jsonString);
-        }
+                SaveAsJson(animals);
+            }
             else if (format.ToLower() == "xml")
             {
-                SaveAsXml(cocktails);
+                SaveAsXml(animals);
             }
             else
             {
@@ -30,17 +24,17 @@ namespace CocktailApp.Services
             }
         }
 
-        private void SaveAsJson(List<Cocktail> cocktails)
+        private void SaveAsJson(List<Animal> animals)
         {
-            var json = JsonSerializer.Serialize(cocktails, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText("cocktails.json", json);
+            var json = JsonSerializer.Serialize(animals, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText("animals.json", json);
         }
 
-        private void SaveAsXml(List<Cocktail> cocktails)
+        private void SaveAsXml(List<Animal> animals)
         {
-            var serializer = new XmlSerializer(typeof(List<Cocktail>));
-            using var writer = new StreamWriter("cocktails.xml");
-            serializer.Serialize(writer, cocktails);
+            var serializer = new XmlSerializer(typeof(List<Animal>));
+            using var writer = new StreamWriter("animals.xml");
+            serializer.Serialize(writer, animals);
         }
     }
 }

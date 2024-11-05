@@ -1,11 +1,11 @@
-using CocktailApp.Services;
+using AnimalApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IOutputService, FileOutputService>();
-builder.Services.AddScoped<ICSer, JsonCSer>();
-builder.Services.AddScoped<ICSer, XmlCSer>();
+builder.Services.AddScoped<IAnimalSerializer, JsonAnimalSerializer>();
+builder.Services.AddScoped<IAnimalSerializer, XmlAnimalSerializer>();
 
 var app = builder.Build();
 

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace AnimalApp.Services
 {
-    public interface IOutputService
+    public interface IAnimalSerializer
     {
-        void OutputToFile(List<Animal> animals, string format);
+        string Serialize(List<Animal> animals);
     }
 }

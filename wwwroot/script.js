@@ -1,53 +1,52 @@
- const headers = ['Название', 'Состав', 'Загрузка'];
+const headers = ['Name', 'Sound', 'Save'];
  const headerRow = document.getElementById('tableHeaders');
  
  headerRow.innerHTML = headers.map(header => `<th>${header}</th>`).join('');
 
  // Пример данных для таблицы
- const cocktails = [
-     { name: 'Маргарита', composition: 'Текила, Лаймовый сок, Куантро или трипл-сек, соль для ободка бокала'},
-     { name: 'Мохито', composition: 'Белый ром, сок лайма, сахар, листья мяты, газированная вода' },
-     { name: 'Пина Колада', composition: 'Светлый ром, кокосовое молоко, ананасовый сок' },
+ const animals = [
+     { name: 'Cat', sound: 'Meow' },
+     { name: 'Dog', sound: 'Woof' },
  ];
 
- const cocktailTable = document.getElementById('cocktailTable');
- cocktailTable.innerHTML = cocktails.map(cocktail => `
+ const animalTable = document.getElementById('animalTable');
+ animalTable.innerHTML = animals.map(animal => `
      <tr>
-         <td>${cocktail.name}</td>
-         <td>${cocktail.composition}</td>
-         <td><button class="btn btn-primary" onclick="saveCocktail('${cocktail.name}')">Загрузить в файл</button></td>
+         <td>${animal.name}</td>
+         <td>${animal.sound}</td>
+         <td><button class="btn btn-primary" onclick="saveAnimal('${animal.name}')">Download</button></td>
      </tr>
  `).join('');
-
- function saveCocktail(cocktailName) {
-    const cocktail = { name: cocktailName };
-    fetch('/api/Cocktail/SaveCocktail', {
+// Сохранение конкретного животного
+function saveAnimal(animalName) {
+    const animal = { name: animalName };
+    fetch('/api/Animal/SaveAnimal', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(cocktail)
+        body: JSON.stringify(animal)
     })
     .then(response => {
         if (response.ok) {
-            alert(`Cocktail ${cocktailName} saved successfully!`);
+            alert(`Animal ${animalName} saved successfully!`);
         } else {
-            alert(`Failed to save ${cocktailName}.`);
+            alert(`Failed to save ${animalName}.`);
         }
     })
     .catch(error => console.error('Error:', error));
 }
 
-// Сохранение всего списка в заданном формате (JSON или XML)
-function saveCocktails(format) {
-    fetch(`/api/Cocktail/output?format=${format}`, {
+// Сохранение всех животных в заданном формате (JSON или XML)
+function saveAnimals(format) {
+    fetch(`/api/Animal/output?format=${format}`, {
         method: 'POST'
     })
     .then(response => {
         if (response.ok) {
-            alert(`Cocktails saved as ${format.toUpperCase()} successfully!`);
+            alert(`Animals saved as ${format.toUpperCase()} successfully!`);
         } else {
-            alert(`Failed to save cocktails as ${format.toUpperCase()}.`);
+            alert(`Failed to save animals as ${format.toUpperCase()}.`);
         }
     })
     .catch(error => console.error('Error:', error));

@@ -1,6 +1,0 @@
-@CocktailApp_HostAddress = http://localhost:5064/
-
-GET {{CocktailApp_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
