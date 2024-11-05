@@ -1,0 +1,6 @@
+bin/
+obj/
+Readme.txt
+.vscode/
+node_modules/
+*.sln

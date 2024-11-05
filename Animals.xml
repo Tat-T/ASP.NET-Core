@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAnimal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Animal>
+    <Name>Dog</Name>
+    <Sound>Bark</Sound>
+  </Animal>
+  <Animal>
+    <Name>Cat</Name>
+    <Sound>Meow</Sound>
+  </Animal>
+  <Animal>
+    <Name>Cow</Name>
+    <Sound>Moo</Sound>
+  </Animal>
+</ArrayOfAnimal>
