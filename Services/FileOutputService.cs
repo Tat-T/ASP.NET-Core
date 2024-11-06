@@ -26,7 +26,7 @@ namespace AnimalApp.Services
             }
             else
             {
-                throw new ArgumentException("Unsupported format specified.");
+                throw new ArgumentException("Указан не потдерживаемый формат.");
             }
         }
 

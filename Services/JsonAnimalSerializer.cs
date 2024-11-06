@@ -1,6 +1,5 @@
 using AnimalApp.Models;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace AnimalApp.Services
 {

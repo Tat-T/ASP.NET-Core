@@ -6,9 +6,5 @@
   {
     "Name": "Cat",
     "Sound": "Meow"
-  },
-  {
-    "Name": "Cow",
-    "Sound": "Moo"
   }
 ]

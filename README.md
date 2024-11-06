@@ -29,3 +29,5 @@ dotnet workload update (при необходимости)
 dotnet run
 
 http://localhost:5221/Index.html
+
+Файлы сохраняются в корень программы Animal.json, Animal.xml

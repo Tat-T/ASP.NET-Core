@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using AnimalApp.Models;
 using AnimalApp.Services;
-using System.Collections.Generic;
 
 namespace AnimalApp.Controllers
 {
@@ -23,8 +22,7 @@ namespace AnimalApp.Controllers
             var animals = new List<Animal>
             {
                 new Animal { Name = "Dog", Sound = "Bark" },
-                new Animal { Name = "Cat", Sound = "Meow" },
-                new Animal { Name = "Cow", Sound = "Moo" }
+                new Animal { Name = "Cat", Sound = "Meow" }
             };
             return Ok(animals);
         }
@@ -38,15 +36,14 @@ namespace AnimalApp.Controllers
             return Ok();
         }
 
-        // Сохраняем все животные в формате JSON или XML
+        // Сохраняем всех животных в формате JSON или XML
        [HttpPost("output")]
         public IActionResult OutputAnimals([FromQuery] string format)
         {
             var animals = new List<Animal>
             {
                 new Animal { Name = "Dog", Sound = "Bark" },
-                new Animal { Name = "Cat", Sound = "Meow" },
-                new Animal { Name = "Cow", Sound = "Moo" }
+                new Animal { Name = "Cat", Sound = "Meow" }
             };
             _outputService.OutputToFile(animals, format);
             return Ok();

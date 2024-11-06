@@ -1,5 +1,4 @@
 using AnimalApp.Models;
-using System.Collections.Generic;
 
 namespace AnimalApp.Services
 {
