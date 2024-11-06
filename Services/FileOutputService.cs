@@ -1,6 +1,5 @@
 using AnimalApp.Models;
-using System.Collections.Generic;
-using System.IO;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Xml.Serialization;
 
@@ -12,7 +11,14 @@ namespace AnimalApp.Services
         {
             if (format.ToLower() == "json")
             {
-                SaveAsJson(animals);
+                var options = new JsonSerializerOptions
+                {
+                  WriteIndented = true,
+                  Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                };
+                string jsonString = JsonSerializer.Serialize(animals, options);
+                File.WriteAllText("animals.json", jsonString);
+                
             }
             else if (format.ToLower() == "xml")
             {

@@ -39,7 +39,7 @@ namespace AnimalApp.Controllers
         }
 
         // Сохраняем все животные в формате JSON или XML
-        [HttpPost("output")]
+       [HttpPost("output")]
         public IActionResult OutputAnimals([FromQuery] string format)
         {
             var animals = new List<Animal>

@@ -17,9 +17,15 @@ const headers = ['Name', 'Sound', 'Save'];
          <td><button class="btn btn-primary" onclick="saveAnimal('${animal.name}')">Download</button></td>
      </tr>
  `).join('');
-// Сохранение конкретного животного
+
 function saveAnimal(animalName) {
-    const animal = { name: animalName };
+
+    const animal = animals.find(c => c.name === animalName);
+    if (!animal) {
+        alert('Animal not found!');
+        return;
+    }
+    
     fetch('/api/Animal/SaveAnimal', {
         method: 'POST',
         headers: {
@@ -31,10 +37,9 @@ function saveAnimal(animalName) {
         if (response.ok) {
             alert(`Animal ${animalName} saved successfully!`);
         } else {
-            alert(`Failed to save ${animalName}.`);
+            alert(`File could not be saved ${animalName}.`);
         }
     })
-    .catch(error => console.error('Error:', error));
 }
 
 // Сохранение всех животных в заданном формате (JSON или XML)
